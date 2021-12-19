@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RemoveDuplicateInArrayList  {
     
@@ -34,6 +35,11 @@ public class RemoveDuplicateInArrayList  {
         RemoveDuplicateInArrayList remDup = new RemoveDuplicateInArrayList();
         list = remDup.removeDuplicatesByHashSet(list);
         System.out.println(list);
+        
+        list = new ArrayList<>(Arrays.asList("One","Two","Two","Three","Three","Three"));
+        System.out.println("List with Duplicates : "+list);
+        List<String> newList = list.stream().distinct().collect(Collectors.toList());
+        System.out.println("Duplicates removed by Stream : "+newList);
       
     }
 }
