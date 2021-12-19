@@ -37,6 +37,8 @@ public class SplitArray  {
             pprint(b);
             System.out.println("-----------------------------");
             pprint(c);
+        }else{
+            System.out.println("Invalid position");
         }
         
         
