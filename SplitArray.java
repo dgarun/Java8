@@ -37,6 +37,18 @@ public class SplitArray  {
             pprint(b);
             System.out.println("-----------------------------");
             pprint(c);
+            
+            int[] d = new int[pos];
+            int[] e = new int[length - pos];
+            
+            d = Arrays.copyOfRange(arr,0,pos);
+            e = Arrays.copyOfRange(arr,pos,length);
+            
+            pprint(d);
+            System.out.println("-----------------------------");
+            pprint(e);
+            
+            
         }else{
             System.out.println("Invalid position");
         }
