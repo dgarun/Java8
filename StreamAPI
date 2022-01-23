@@ -1,0 +1,102 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
+
+public class StreamAPI {
+    public static void main(String args[]) {
+      
+      Mobile mobile1 = new Mobile("Apple","12",5.5f,6);
+      Mobile mobile2 = new Mobile("Apple","8",6f,3);
+      Mobile mobile3 = new Mobile("Samsung","Galaxy M31",6f,6);
+      Mobile mobile4 = new Mobile("Redmi","9 Pro",6f,6);
+      
+      List<Mobile> mobiles = new ArrayList<>();
+      mobiles.add(mobile1);
+      mobiles.add(mobile2);
+      mobiles.add(mobile3);
+      mobiles.add(mobile4);
+      
+      //mobiles.forEach(System.out::println);
+      
+      mobiles.stream().
+      filter(m -> m.getBrand().equalsIgnoreCase("samsung")).
+      map(Mobile::getModel).
+      forEach(System.out::println);
+      
+      List<String> models = mobiles.stream().filter(m -> m.getRam() > 3).map(Mobile::getModel).collect(Collectors.toList());
+      
+      System.out.println("Mobiles with Ram which is more than 3 GB:");
+      models.forEach(System.out::println);
+      
+      Set<String> brands = mobiles.stream().map(Mobile::getBrand).collect(Collectors.toCollection(HashSet::new));
+      
+      System.out.println("Available Mobile Brands:");
+      brands.forEach(System.out::println);
+      
+    }
+}
+
+class Mobile {
+    
+    public String brand = "Apple";
+    private String model;
+	private String display;
+	private float displaySize;
+    private int ram;
+    private String processor;
+    
+    public Mobile(String brand, String model, float displaySize, int ram){
+        this.brand = brand;
+        this.model = model;
+        this.displaySize = displaySize;
+        this.ram = ram;
+    };
+    
+    
+    
+    public static void callStaticMethod(){
+        
+        System.out.println("Static Method is called...");
+        
+    }
+    
+    public String getBrand(){
+        
+        return this.brand;
+        
+    }
+    
+    public String getModel(){
+        
+        return this.model;
+        
+    }
+    
+    public int getRam(){
+        
+        return this.ram;
+        
+    }
+    
+    public float getDisplaySize(){
+        return this.displaySize;
+    }
+    
+    public void setDisplaySize(float displaySize){
+        this.displaySize = displaySize;
+    }
+    
+
+    public void playSong(String songName){
+    	System.out.println(songName + " is playing currently");
+    }
+    
+    public void makeCall(long mobileNumber, String contactName){
+    	System.out.println("Calling " + contactName);
+    
+    }
+
+}
